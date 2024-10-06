@@ -28,6 +28,7 @@ public class Gryffindor extends Hogwarts {
     public int getCourage() {
         return courage;
     }
+
     public int total() {
         return honor + nobility + courage;
     }

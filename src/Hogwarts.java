@@ -38,7 +38,7 @@ public abstract class Hogwarts {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hogwarts hogwarts = (Hogwarts) o;
-        return Objects.equals(firstName, hogwarts.firstName) && Objects.equals(lastName, hogwarts.lastName);
+        return Objects.equals(lastName, hogwarts.lastName);
     }
 
     @Override

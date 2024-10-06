@@ -1,4 +1,4 @@
-public class Ravenclaw extends Hogwarts{
+public class Ravenclaw extends Hogwarts {
     private final int intelligence, wisdom, wit, creativity;
 
     public Ravenclaw(String firstName, String lastName) {
@@ -8,6 +8,7 @@ public class Ravenclaw extends Hogwarts{
         this.wit = getRandom();
         this.creativity = getRandom();
     }
+
     public void characteristicPrint() {
         super.studentPrint();
         System.out.println("Ум = " + intelligence + "; Мудрость = " + wisdom + "; Остроумие = "
@@ -29,6 +30,7 @@ public class Ravenclaw extends Hogwarts{
     public int getCreativity() {
         return creativity;
     }
+
     public int total() {
         return intelligence + wisdom + wit + creativity;
     }
