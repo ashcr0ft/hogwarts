@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class HogwartsStudents {
     private static Hogwarts[] students = new Hogwarts[15];
 
@@ -26,45 +28,33 @@ public class HogwartsStudents {
 
     //Вывод данных по студенту
     public void printStudentByName(String studentName) {
-        boolean find = false;
-        for (Hogwarts student : students) {
-            if (student != null && student.getLastName().equals(studentName)) {
-                if (student instanceof Gryffindor) {
-                    ((Gryffindor) student).characteristicPrint();
-                    find = true;
-                    break;
-                }
-                if (student instanceof Hufflepuff) {
-                    ((Hufflepuff) student).characteristicPrint();
-                    find = true;
-                    break;
-                }
-                if (student instanceof Slytherin) {
-                    ((Slytherin) student).characteristicPrint();
-                    find = true;
-                    break;
-                }
-                if (student instanceof Ravenclaw) {
-                    ((Ravenclaw) student).characteristicPrint();
-                    find = true;
-                    break;
-                }
+        Hogwarts student = finder(studentName);
+        if (student instanceof Gryffindor) {
+            ((Gryffindor) student).characteristicPrint();
+        }
+        if (student instanceof Hufflepuff) {
+            ((Hufflepuff) student).characteristicPrint();
+        }
+        if (student instanceof Slytherin) {
+            ((Slytherin) student).characteristicPrint();
+        }
+        if (student instanceof Ravenclaw) {
+            ((Ravenclaw) student).characteristicPrint();
+        }
 
-            }
-        }
-        if (!find) {
-            System.out.println("Who's " + studentName + "?");
-        }
     }
 
-//Метод для поиска объектов в массиве по полю getLastName
+
+    //Метод для поиска объектов в массиве по полю getLastName
     public Hogwarts finder(String studentName) {
         Hogwarts studentFind = null;
         for (Hogwarts student : students) {
-            if (student != null && (studentFind == null || student.getLastName().equals(studentName))) {
+            if (student != null && (studentFind == null && Objects.equals(student.getLastName(), studentName))) {
                 studentFind = student;
             }
-
+        }
+        if (studentFind == null) {
+            throw new NullPointerException("Exception: studentName is null!");
         }
         return studentFind;
     }
@@ -113,14 +103,15 @@ public class HogwartsStudents {
             System.out.println("Разные факультеты");
         }
     }
-//Дуэль
+
+    //Дуэль
     public void duel(String studentName1, String studentName2) {
         Hogwarts student1 = finder(studentName1);
         Hogwarts student2 = finder(studentName2);
         if (student1.commonPowers() > student2.commonPowers()) {
             System.out.println(student1.getFirstName() + " " + student1.getLastName()
                     + " обладает бОльшей мощностью магии, чем " + student2.getFirstName() + " " + student2.getLastName());
-        }else System.out.println(student2.getFirstName() + " " + student2.getLastName()
+        } else System.out.println(student2.getFirstName() + " " + student2.getLastName()
                 + " обладает бОльшей мощностью магии, чем " + student1.getFirstName() + " " + student1.getLastName());
     }
 
