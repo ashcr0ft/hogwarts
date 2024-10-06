@@ -1,7 +1,7 @@
 public class Slytherin extends Hogwarts {
     private int cunning, determination, ambition, resourcefulness, lustForPower;
 
-        public Slytherin(String firstName, String lastName) {
+    public Slytherin(String firstName, String lastName) {
         super(firstName, lastName);
         this.cunning = getRandom();
         this.determination = getRandom();
@@ -16,6 +16,7 @@ public class Slytherin extends Hogwarts {
         System.out.println("Хитрость = " + cunning + "; Решительность = " + determination + "; Амбициозность = "
                 + ambition + "; Находчивость = " + resourcefulness + "; Жажда власти = " + lustForPower);
     }
+
     public int getCunning() {
         return cunning;
     }
@@ -35,6 +36,7 @@ public class Slytherin extends Hogwarts {
     public int getLustForPower() {
         return lustForPower;
     }
+
     public int total() {
         return cunning + determination + ambition + resourcefulness + lustForPower;
     }
